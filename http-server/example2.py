@@ -36,6 +36,9 @@ class MyHandler(BaseHTTPRequestHandler):
 				self.end_headers()
 				self.wfile.write(f.read())
 				f.close()
+			else:
+				self.send_error(404, 'aaFile not found : %s' %self.path)
+
 			return
 
 		except IOError:
